@@ -1,0 +1,54 @@
+#include <Servo.h>
+
+// create servos
+// 2 - 7
+
+// door by Ariadne
+Servo servoAriDoor;
+// door by Sword
+Servo servoSwordDoor;
+// door by Minotaur
+Servo servoMinoDoor;
+// Minotaur servo
+Servo servoMinotaur;
+
+// create switches
+// 8 - 13
+
+// 13 switch near Ariadne
+const int switchAri = 13;
+// 12 switch to open Minotaur door
+const int switchMino = 12;
+// 11 Minotaur
+const int Minotaur = 11;
+
+void setup() {
+// setup servos 2-5
+  servoAriDoor.attach(2);
+  servoSwordDoor.attach(3);
+  servoMinoDoor.attach(4);
+  servoMinotaur.attach(5);
+
+// setup switches
+  pinMode(switchAri, INPUT);
+  pinMode(switchMino, INPUT);
+  pinMode(Minotaur, INPUT);
+}
+
+void loop() {
+// if ariadne switch, ariadne door & sword door 90
+  if (digitalRead(switchAri) == HIGH) {
+    servoAriDoor.write(90);
+    servoSwordDoor.write(90);
+  }
+
+// if minotaur door switch, minotaur door 90
+  if (digitalRead(switchMino) == HIGH) {
+    servoMinoDoor.write(90);
+  }
+
+// if minotaur switch, minotaur 180
+  if (digitalRead(Minotaur) == HIGH) {
+    servoMinotaur.write(180)
+  }
+}
